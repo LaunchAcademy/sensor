@@ -1,5 +1,8 @@
 require "sensor/version"
+require "sensor/date_range"
 
 module Sensor
-  # Your code goes here...
+  def self.require(path)
+    super("sensor/actuator/#{path}")
+  end
 end
