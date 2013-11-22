@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Sensor::DateRange do
+describe Sensor::TimeRange do
   before do
     Timecop.freeze
   end
@@ -23,7 +23,7 @@ describe Sensor::DateRange do
     (Date.new(now.year, now.month, now.day) + 1).to_time - 1
   end
 
-  let(:date_range) { Sensor::DateRange.new(start_time, end_time) }
+  let(:date_range) { Sensor::TimeRange.new(start_time, end_time) }
 
   it 'has a start correlated to the constructor argument' do
     expect(date_range.start).to eql(start_time)

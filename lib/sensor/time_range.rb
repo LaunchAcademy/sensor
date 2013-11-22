@@ -1,7 +1,7 @@
 require 'chronic'
 
 module Sensor
-  class DateRange
+  class TimeRange
     attr_reader :start, :end
     def initialize(start_date, end_date)
       @start = datify(start_date)

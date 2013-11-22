@@ -1,5 +1,5 @@
 require "sensor/version"
-require "sensor/date_range"
+require "sensor/time_range"
 
 module Sensor
   def self.require(path)
