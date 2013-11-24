@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "chronic"
   spec.add_dependency "garb", "~> 0.9.1"
   spec.add_dependency "twitter", "~> 5.0.0"
+  spec.add_dependency "koala"
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
