@@ -1,3 +1,5 @@
+require 'sensor'
+
 Sensor.require("analytics_retrieval")
 Sensor.require("twitter_retrieval")
 Sensor.require("facebook_retrieval")
