@@ -33,7 +33,6 @@ module Sensor
           payload.distribute
         end
       end
-
     end
   end
 end
