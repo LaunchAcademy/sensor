@@ -24,12 +24,16 @@ module Sensor
           payload.acquire
           payload.distribute
         end
+
+        desc "run sensors for an arbitrary range of dates"
+        task :custom do
+          time_range = Sensor::TimeRange.new(ENV['START'], ENV['END'])
+          payload = Sensor::Payload.new(time_range)
+          payload.acquire
+          payload.distribute
+        end
       end
 
-    end
-
-
-    def run_task
     end
   end
 end
