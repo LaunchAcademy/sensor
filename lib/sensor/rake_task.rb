@@ -1,3 +1,4 @@
+require 'rake/tasklib'
 require 'sensor/payload'
 
 module Sensor
