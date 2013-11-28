@@ -17,11 +17,7 @@ module Sensor
     end
 
     def acquire
-      [
-        Sensor::Actuator::AnalyticsRetrieval,
-        Sensor::Actuator::TwitterRetrieval,
-        Sensor::Actuator::FacebookRetrieval
-      ].each do |actuator|
+      actuator_classes.each do |actuator|
         @data.merge!(actuator.new(@time_range).acquire)
       end
 
@@ -30,6 +26,11 @@ module Sensor
 
     def distribute
       Sensor::OutputDistribution::FlowDock.new(self).distribute
+    end
+
+    protected
+    def actuator_classes
+      Sensor.configuration.actuators
     end
   end
 end
