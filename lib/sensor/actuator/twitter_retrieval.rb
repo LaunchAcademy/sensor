@@ -38,7 +38,7 @@ module Sensor
       end
 
       def mention_count
-        search = client.search("to:launchacademy_",
+        search = client.search("@launchacademy_ -from:launchacademy_",
           search_options)
         search.entries.count
       end
