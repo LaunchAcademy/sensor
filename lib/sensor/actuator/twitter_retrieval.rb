@@ -31,16 +31,20 @@ module Sensor
       end
 
       def tweet_count
-        search = client.search("from:launchacademy_",
+        search = client.search("from:#{account}",
           search_options
         )
         search.entries.count
       end
 
       def mention_count
-        search = client.search("@launchacademy_ -from:launchacademy_",
+        search = client.search("@#{account} -from:#{account}",
           search_options)
         search.entries.count
+      end
+
+      def account
+        ENV['TWITTER_ACCOUNT']
       end
 
       def client
