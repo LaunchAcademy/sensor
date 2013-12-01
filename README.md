@@ -1,6 +1,6 @@
 # Sensor
 
-TODO: Write a gem description
+A utility that reports metrics from social media and analytics providers.
 
 ## Installation
 
@@ -18,7 +18,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+**This is in draft mode and is not yet stable for use**
+
+Desired configuration:
+
+```ruby
+Sensor.add_source :twitter, {
+    account: 'launchacademy_',
+    consumer_key: ENV['TWITTER_CONSUMER_KEY'],
+    consumer_secret: ENV['TWITTER_CONSUMER_SECRET'],
+    access_token: ENV['TWITTER_ACCESS_TOKEN'],
+    access_token_secret: ENV['TWITTER_ACCESS_TOKEN_SECRET']
+  }, 
+  metrics: [:followers, :tweets, :mentions]
+```
 
 ## Contributing
 
