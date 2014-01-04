@@ -43,12 +43,7 @@ module Sensor
       protected
       def client
         if !@client
-          begin
-            session = Garb::Session.login(analytics_user, analytics_password, secure: true)
-          rescue Exception => e
-            require 'pry'
-            binding.pry
-          end
+          session = Garb::Session.login(analytics_user, analytics_password, secure: true)
         end
 
       end
