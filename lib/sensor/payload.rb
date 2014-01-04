@@ -7,9 +7,7 @@ Sensor.require("flow_dock")
 
 module Sensor
   class Payload
-    attr_reader :data, :time_range
-    delegate :start_date, to: :time_range
-    delegate :end_date, to: :time_range
+    attr_reader :time_range, :data
 
     def initialize(time_range)
       @time_range = time_range
@@ -26,6 +24,14 @@ module Sensor
 
     def distribute
       Sensor::OutputDistribution::FlowDock.new(self).distribute
+    end
+
+    def start_date
+      @time_range.start_date
+    end
+
+    def end_date
+      @time_range.end_date
     end
 
     protected
