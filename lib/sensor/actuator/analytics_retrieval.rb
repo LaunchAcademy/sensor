@@ -1,11 +1,11 @@
 require 'garb'
 
-CA_CERT_FILE = File.join(File.dirname(__FILE__),
-  '../../../certs/cacert.pem')
-
 module Sensor
   module Actuator
     class AnalyticsRetrieval
+      CA_CERT_FILE = File.join(File.dirname(__FILE__),
+        '../../../certs/cacert.pem')
+
       extend Garb::Model
 
       metrics :visitors,
@@ -34,10 +34,21 @@ module Sensor
         end
       end
 
+      class << self
+        def enable_garb_ssl!
+          Garb.ca_cert_file = CA_CERT_FILE
+        end
+      end
+
       protected
       def client
         if !@client
-          session = Garb::Session.login(analytics_user, analytics_password)
+          begin
+            session = Garb::Session.login(analytics_user, analytics_password, secure: true)
+          rescue Exception => e
+            require 'pry'
+            binding.pry
+          end
         end
 
       end
@@ -66,3 +77,5 @@ module Sensor
     end
   end
 end
+
+Sensor::Actuator::AnalyticsRetrieval.enable_garb_ssl!
