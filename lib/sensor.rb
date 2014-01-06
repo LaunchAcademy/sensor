@@ -15,8 +15,12 @@ module Sensor
     def require(path)
       begin
         super("sensor/actuator/#{path}")
-      rescue LoadError
-        super("sensor/output_distribution/#{path}")
+      rescue LoadError => e
+        if e.message =~ /#{Regexp.escape(path)}/
+          super("sensor/output_distribution/#{path}")
+        else
+          raise e
+        end
       end
     end
   end
