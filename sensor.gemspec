@@ -33,4 +33,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry"
   spec.add_development_dependency "timecop"
   spec.add_development_dependency "dotenv"
+
+  spec.add_development_dependency "sinatra"
+  spec.add_development_dependency "shotgun"
+  spec.add_development_dependency "omniauth-facebook"
+  spec.add_development_dependency "omniauth-google-oauth2"
 end

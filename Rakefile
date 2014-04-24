@@ -7,4 +7,7 @@ RSpec::Core::RakeTask.new(:spec)
 
 task :default => :spec
 
+require 'dotenv'
+Dotenv.load
+
 Sensor::RakeTask.new(:sensor)
