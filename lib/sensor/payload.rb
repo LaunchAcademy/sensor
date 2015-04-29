@@ -4,6 +4,7 @@ Sensor.require("analytics_retrieval")
 Sensor.require("twitter_retrieval")
 Sensor.require("facebook_retrieval")
 Sensor.require("flow_dock")
+Sensor.require("slack")
 
 module Sensor
   class Payload
@@ -23,7 +24,11 @@ module Sensor
     end
 
     def distribute
-      Sensor::OutputDistribution::FlowDock.new(self).distribute
+      if ENV['SLACK_WEBHOOK_URL']
+        Sensor::OutputDistribution::Slack.new(self).distribute
+      else
+        Sensor::OutputDistribution::FlowDock.new(self).distribute
+      end
     end
 
     def start_date
